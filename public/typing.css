@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.typing {
+    text-align: center;
+    border-radius: 4px;
+    margin-block: 2px;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    padding: 4px;
+    font-family: 'Fira Sans';
+}
+
+.typing.Normal {
+    background-color: #aa9;
+}
+
+.typing.Fire {
+    background-color: #f42;
+}
+
+.typing.Water {
+    background-color: #39f;
+}
+
+.typing.Electric {
+    background-color: #fc3;
+}
+
+.typing.Grass {
+    background-color: #7c5;
+}
+
+.typing.Ice {
+    background-color: #6cf;
+}
+
+.typing.Fighting {
+    background-color: #b54;
+}
+
+.typing.Poison {
+    background-color: #a59;
+}
+
+.typing.Ground {
+    background-color: #db5;
+}
+
+.typing.Flying {
+    background-color: #89f;
+}
+
+.typing.Psychic {
+    background-color: #f59;
+}
+
+.typing.Bug {
+    background-color: #ab2;
+}
+
+.typing.Rock {
+    background-color: #ba6;
+}
+
+.typing.Ghost {
+    background-color: #66b;
+}
+
+.typing.Dragon {
+    background-color: #76e;
+}
+
+.typing.Dark {
+    background-color: #754;
+}
+
+.typing.Steel {
+    background-color: #aab;
+}
+
+.typing.Fairy {
+    background-color: #e9e;
+}

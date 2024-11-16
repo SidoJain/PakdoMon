@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: gray;
+    font-family: 'Fira Sans';
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin-block: 20px;
+    border-radius: 4px;
+    border: none;
+    width: 80%;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+table {
+    width: 80%;
+    margin-block: 20px;
+    border-collapse: collapse;
+    font-family: 'Fira Sans';
+}
+
+th {
+    width: 5.263%;
+    height: 10px;
+    border: 2px solid white;
+}
+
+td {
+    border: 2px solid white;
+    color: #ffdd57;
+    text-align: center;
+}
+
+td[class='0'] {
+    background-color: #2e3436;
+}
+
+td[class='0.5'] {
+    background-color: #a40000;
+}
+
+td[class='2'] {
+    background-color: #4e9a06;
+}
+
+.hiddenBox {
+    visibility: hidden;
+    border: none;
+}
+
+.scrollElement {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+    .scrollElement {
+        overflow-x: scroll;
+        display: inline;
+    }
+}

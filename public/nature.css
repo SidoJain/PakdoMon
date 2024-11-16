@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: gray;
+    font-family: 'Fira Sans';
+    width: 100vw;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-weight: 800;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.container {
+    background-color: white;
+    width: 80%;
+    max-width: 800px;
+    border: none;
+    padding: 20px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+table {
+    width: 80%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th {
+    font-weight: 500;
+}
+
+td, th {
+    height: 30px;
+    border: 2px solid gray;
+    width: 16.667%;
+}
+
+.hiddenBox {
+    visibility: hidden;
+    border: none;
+}
+
+.Atk {
+    background-color: rgba(255, 166, 0, 0.80);
+}
+
+.Def {
+    background-color: rgba(255, 255, 0, 0.80);
+}
+
+.SpAtk {
+    background-color: rgba(123, 200, 225, 0.80);
+}
+
+.SpDef {
+    background-color: rgba(88, 229, 53, 0.80);
+}
+
+.Speed {
+    background-color: rgba(255, 73, 73, 0.8);
+}
+
+.Diag {
+    background-color: rgba(175, 175, 175, 0.60);
+}
+
+@media screen and (max-width: 750px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    table {
+        font-size: 12px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    table {
+        font-size: 8px;
+    }
+}

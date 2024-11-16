@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%  let pokeCount = 0; %>
+<%  for (let pokemon of abilityData.pokemon) {
+        if (pokemon.dex_num > 905) {
+            continue;
+        }
+        pokeCount++;
+} %>
+
+<%- include('partials/head') %>
+<head>
+    <title><%= titleCase(abilityData.name.replace('-', ' ')).replace(' ', '-') %> | Pokemon Ability</title>
+    <link rel="stylesheet" href="/ability.css">
+</head>
+<body>
+    <nav>
+        <button><a href="/home">Home</a></button>
+        <button onclick="history.back()">Back</button>
+    </nav>
+    <div class="navLine"></div>
+
+    <main>
+        <div class="container">
+            <h1><%= titleCase(abilityData.name.replace('-', ' ')).replace(' ', '-') %></h1>
+            <div class="desc">
+                <div class="left"><%= abilityData.desc %></div>
+                <div class="right">Number of Pokemon with <%= titleCase(abilityData.name.replace('-', ' ')).replace(' ', '-') %>: <%= pokeCount %></div>
+            </div>
+            <div class="pokemonContainer">
+                <%  for (let pokemon of abilityData.pokemon) { %>
+                        <% if (pokemon.dex_num > 905) {
+                            continue
+                        } %>
+                        <div><a href="/pokemon/<%= pokemon.name %>"><img class="pokeImg" src='https://img.pokemondb.net/artwork/<%= pokemon.name.replace('alola', 'alolan') %>.jpg' alt="<%= pokemon.name.replace('alola', 'alolan') %>"></a></div>
+                <%  } %>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+<% function titleCase(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++)
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    return splitStr.join(' ');
+} %>

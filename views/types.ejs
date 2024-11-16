@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% const typeList = ['nor', 'fir', 'wat', 'ele', 'gra', 'ice', 'fig', 'poi', 'gro', 'fly', 'psy', 'bug', 'roc', 'gho', 'dra', 'dar', 'ste', 'fai'] %>
+
+<%- include('partials/head') %>
+<head>
+    <title>Type Chart</title>
+    <link rel="stylesheet" href="/types.css">
+    <link rel="stylesheet" href="/typing.css">
+</head>
+<body>
+    <nav><button><a href="/home">Home</a></button></nav>
+    <div class="navLine"></div>
+
+    <main>
+        <div class="container">
+            <h1>Type Chart</h1>
+            <h2>Rows are Attacker</h2>
+            <h2>Cols are Defenders</h2>
+
+            <div class="scrollElement">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="hiddenBox">APP</th>
+                            <% for (let type of allTypes) { %>
+                                <th>
+                                    <div class="typing <%= capitalize(type.fullName) %>"><%= type.nameInThree.toUpperCase() %></div>
+                                </th>
+                            <% } %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let type of allTypes) { %>
+                            <tr>
+                                <th>
+                                    <div class="typing <%= capitalize(type.fullName) %>"><%= type.nameInThree.toUpperCase() %></div>
+                                </th>
+                                <% for (let typesFromMap of typeList) { %>
+                                    <%  let textValue %>
+                                    <%  if (type.zeroDmgTo.includes(typesFromMap)) {
+                                            textValue = 0
+                                        } else if (type.halfDmgTo.includes(typesFromMap)) {
+                                            textValue = 0.5
+                                        } else if (type.twoDmgTo.includes(typesFromMap)) {
+                                            textValue = 2
+                                        } else {
+                                            textValue = ''
+                                        } %>
+    
+                                    <td class="<%= textValue %>"><%= textValue %></td>
+                                <% } %>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+<% function capitalize(val) { 
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+} %>

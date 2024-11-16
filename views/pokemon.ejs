@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+<head>
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="/pokemon.css">
+</head>
+
+<%  let nextOffset;
+    if (pokeData.next) {
+        nextOffset = pokeData.next.split('?')[1].split('&')[0].split('=')[1]
+        if (Number.parseInt(nextOffset) > 905) {
+            nextOffset = 0
+        }
+    } else {
+        nextOffset = 0
+    } %>
+
+<body>
+    <nav>
+        <button><a href="/pokemon?offset=<%= pokeData.previous ? pokeData.previous.split('?')[1].split('&')[0].split('=')[1] : 900 %>">Prev</a></button>
+        <button><a href="/home">Home</a></button>
+        <button><a href="/pokemon?offset=<%= nextOffset %>">Next</a></button>
+    </nav>
+    <div class="navLine"></div>
+
+    <main>
+        <div class="container <%= (nextOffset === 0) ? 'end' : '' %>">
+            <% for (let poke of pokeData.results) { %>
+                <%  const temp = poke.url.split('/')
+                    if (Number.parseInt(temp[temp.length - 2]) > 905) {
+                        break
+                    } %>
+                    <div><a href="/pokemon/<%= poke.name %>"><img class="pokeImg" src='https://img.pokemondb.net/artwork/<%= poke.name %>.jpg' alt="<%= poke.name %>"></a></div>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>

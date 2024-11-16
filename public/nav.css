@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    background-color: rgb(65, 65, 65);
+    height: 8vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navLine {
+    width: 100vw;
+    height: 20px;
+    background: linear-gradient(rgb(65, 65, 65), gray);
+}
+
+nav button {
+    background: none;
+    border: none;
+    font-family: 'Fira Sans';
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+nav button a {
+    color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 550px) {
+    nav button {
+        font-size: 20px;
+    }
+}

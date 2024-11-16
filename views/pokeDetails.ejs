@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%  let pokeName
+    if (pokeData.name.includes('-')) {
+        if (pokeData.name.split('-').length > 2) {
+            if (pokeData.name.includes('mega')) {
+                pokeName = pokeData.name
+            } else {
+                pokeName = pokeData.name.split('-')[0]
+            }
+        } else if (pokeData.name.includes('alola')) {
+            pokeName = pokeData.name.replaceAll('alola', 'alolan')
+        } else {
+            pokeName = pokeData.name
+        }
+    } else {
+        pokeName = pokeData.name
+    } %>
+
+<%- include('partials/head') %>
+<head>
+    <title><%= titleCase(pokeName.replaceAll('-', ' ')).replaceAll(' ', '-') %></title>
+    <link rel="stylesheet" href="/pokeDetails.css">
+    <link rel="stylesheet" href="/typing.css">
+</head>
+<body>
+    <nav>
+        <button><a href="/home">Home</a></button>
+        <button onclick="history.back()">Back</button>
+    </nav>
+    <div class="navLine"></div>
+
+    <main>
+        <div class="container">
+            <div class="pokeName">
+                <h1><%= titleCase(pokeName.replaceAll('-', ' ')).replaceAll(' ', '-') %></h1>
+            </div>
+            <div class="pokeInfo">
+                <img class="pokeImg" src='<%= pokeData.sprite %>' alt="<%= pokeName %>">
+                <div class="details">
+                    <table class="infoTable">
+                        <tr>
+                            <td colspan="2" style="width: 60%;">Pokedex</td>
+                            <td colspan="2">
+                                <% if (pokeData.dex_num < 10) { %>
+                                    00<%= pokeData.dex_num %>
+                                <% } else if (pokeData.dex_num < 100) { %>
+                                    0<%= pokeData.dex_num %>
+                                <% } else { %>
+                                    <%= pokeData.dex_num %>
+                                <% } %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Types</td>
+                            <td colspan="2">
+                                <% for(let type of pokeData.typing) { %>
+                                    <div class="typing <%= capitalize(type) %>"><%= capitalize(type) %></div>
+                                <% } %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Abilities</td>
+                            <td colspan="2">
+                                <% for(let ability of pokeData.abilities) { %>
+                                    <div><a href="/ability/<%= ability %>"><%= titleCase(ability.replaceAll('-', ' ')).replaceAll(' ', '-') %></a></div>
+                                <% } %>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="statTable">
+                        <tbody>
+                            <% let statTotal = 0; %>
+                            <% for (let stat of pokeData.stats) { %>
+                                <%  if (stat.name === 'special-attack') { %>
+                                <%      statName = 'Sp. Atk' %>
+                                <%  } else if (stat.name === 'special-defense') { %>
+                                <%      statName = 'Sp. Def' %>
+                                <%  } else if (stat.name === 'hp') { %>
+                                <%      statName = 'HP' %>
+                                <%  } else { %>
+                                <%      statName = capitalize(stat.name) %>
+                                <%  } %>
+                                <% statTotal += stat.base_stat %>
+
+                                <tr>
+                                    <td colspan="2" style="text-align: right;"><%= statName %></td>
+                                    <td colspan="2" style="width: 50%; text-align: center;"><%= stat.base_stat %></td>
+                                    <td colspan="2" style="text-align: right;"><progress id="bar" value="<%= stat.base_stat %>" min="0" max="180"></progress></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" style="text-align: right;">Total</td>
+                                <td colspan="2" style="text-align: center;"><%= statTotal %></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <%  if (evolData) { %>
+                <%  if (evolData.pokemon_two) { %>
+            <h2>Evolutions</h2>
+            <div class="evolution">
+                <%  if (evolData.pokemon_one) { %>
+                    <div class="evolPokeImg"><a href="<%= evolData.pokemon_one %>"><img src="https://img.pokemondb.net/artwork/<%= evolData.pokemon_one %>.jpg" alt=""></a></div>
+                <%  } %>
+                <%  if (evolData.pokemon_two) { %>
+                    <div class="evolArrow">
+                        <img style="width: 30px; height: auto;" src="<%= evolData.evolve_one_by.imgUrl ? evolData.evolve_one_by.imgUrl : 'https://www.clipartmax.com/png/middle/34-343202_black-arrow-clip-art-photo-medium-size-black-arrow-clipart.png' %>" alt="">
+                        <h5><%= titleCase(evolData.evolve_one_by.name.replaceAll('-', ' ')) %></h5>
+                    </div>
+                    <div class="evolPokeImg"><a href="<%= evolData.pokemon_two %>"><img src="https://img.pokemondb.net/artwork/<%= evolData.pokemon_two %>.jpg" alt=""></a></div>
+                <%  } %>
+                <%  if (evolData.pokemon_three) { %>
+                    <div class="evolArrow">
+                        <img style="width: 30px; height: auto;" src="<%= evolData.evolve_two_by.imgUrl ? evolData.evolve_two_by.imgUrl : 'https://www.clipartmax.com/png/middle/34-343202_black-arrow-clip-art-photo-medium-size-black-arrow-clipart.png' %>" alt="">
+                        <h5><%= titleCase(evolData.evolve_two_by.name.replaceAll('-', ' ')) %></h5>
+                    </div>
+                    <div class="evolPokeImg"><a href="<%= evolData.pokemon_three %>"><img src="https://img.pokemondb.net/artwork/<%= evolData.pokemon_three %>.jpg" alt=""></a></div>
+                <%  } %>
+            </div>
+                <%  } %>
+            <%  } %>
+
+            <h2>Learn Set</h2>
+            <h4>(<%= titleCase(pokeData.moves_updated_to.replaceAll('-', ' ')).replaceAll(' ', '-') %>)</h4>
+            <div class="moves">
+                <table class="movesTable">
+                    <thead>
+                        <tr>
+                            <th class="moveLevel" style="width: 5%;">Lvl</th>
+                            <th class="moveName">Move</th>
+                            <th class="moveType" style="width: 10%;">Type</th>
+                            <th class="moveCat">Cat.</th>
+                            <th class="movePower" style="width: 10%;">Power</th>
+                            <th class="moveAcc" style="width: 10%;">Acc.</th>
+                            <th class="movePP" style="width: 5%;">PP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%  for (let move of moveData) { %>
+                            <tr>
+                                <td><%= move.level_learned_at %></td>
+                                <td><%= titleCase(move.name.replaceAll('-', ' ')) %></td>
+                                <td class="typing <%= capitalize(move.typing) %>"><%= capitalize(move.typing) %></td>
+                                <td><img width="30px" height="20px" src="https://img.pokemondb.net/images/icons/move-<%= move.damage_class %>.png" alt=""></td>
+                                <td><%= move.power ? move.power : '-' %></td>
+                                <td><%= move.accuracy ? move.accuracy : '-' %></td>
+                                <td><%= move.pp ? move.pp : '-' %></td>
+                            </tr>
+                        <%  } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+<% function capitalize(val) { 
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+} %>
+
+<% function titleCase(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++)
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    return splitStr.join(' ');
+} %>
