@@ -36,9 +36,9 @@
     <main>
         <div class="container">
             <h1>Pokemon Search</h1>
-            <input type="text" id="myInput" onkeyup="searchFunc()" placeholder="Search for names..">
+            <input type="text" id="input" onkeyup="searchFunc()" placeholder="Search for names..">
             <div class="scrollElement">
-                <ul id="myUL">
+                <ul id="ul">
                     <%  for (let pokemon of pokeData) { %>
                         <%  let dexNum; %>
                         <%  if (pokemon.dex_num >= 100) {

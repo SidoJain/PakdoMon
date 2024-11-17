@@ -39,12 +39,10 @@ h1 {
     margin-block: 16px;
 }
 
-#myInput {
-	background-position: 10px 12px;
-	background-repeat: no-repeat;
+#input {
 	width: 60%;
 	font-size: 16px;
-	padding: 12px 20px 12px 40px;
+	padding: 12px;
 	border: 1px solid #ddd;
 	margin-block: 12px;
     border-radius: 4px;
@@ -59,9 +57,15 @@ h1 {
     height: 300px;
     overflow-y: scroll;
     margin-block: 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-#myUL {
+.scrollElement::-webkit-scrollbar {
+    display: none;
+}
+
+#ul {
 	list-style-type: none;
     width: 100%;
 	padding: 0;
@@ -72,7 +76,7 @@ h1 {
     justify-content: center;
 }
 
-#myUL li a {
+#ul li a {
 	border: 1px solid #ddd;
 	margin-top: -1px;
 	background-color: #f6f6f6;
@@ -83,16 +87,16 @@ h1 {
 	display: block;
 }
 
-#myUL li a:hover:not(.header) {
+#ul li a:hover:not(.header) {
 	background-color: #eee;
 }
 
 @media screen and (max-width: 450px) {
-    #myInput {
+    #input {
         font-size: 12px;
     }
 
-    #myUL li a {
+    #ul li a {
         font-size: 12px;
     }
 }
