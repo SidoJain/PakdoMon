@@ -75,6 +75,10 @@ h1 {
     opacity: 90%;
 }
 
+.pokemonContainer div.lowPoke {
+    height: 80%;
+}
+
 @media screen and (max-width: 800px) {
     .desc {
         flex-direction: column;
@@ -90,6 +94,7 @@ h1 {
     }
 
     .pokemonContainer div {
-        height: 30%;
+        height: 40%;
+        width: 40%;
     }
 }
