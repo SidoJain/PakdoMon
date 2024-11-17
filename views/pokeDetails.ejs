@@ -41,8 +41,8 @@
                 <div class="details">
                     <table class="infoTable">
                         <tr>
-                            <td colspan="2" style="width: 60%;">Pokedex</td>
-                            <td colspan="2">
+                            <td colspan="2" class="leftTd">Pokedex</td>
+                            <td colspan="2" class="rightTd">
                                 <% if (pokeData.dex_num < 10) { %>
                                     00<%= pokeData.dex_num %>
                                 <% } else if (pokeData.dex_num < 100) { %>
@@ -53,16 +53,16 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">Types</td>
-                            <td colspan="2">
+                            <td colspan="2" class="leftTd">Types</td>
+                            <td colspan="2" class="rightTd">
                                 <% for(let type of pokeData.typing) { %>
                                     <div class="typing <%= capitalize(type) %>"><%= capitalize(type) %></div>
                                 <% } %>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">Abilities</td>
-                            <td colspan="2">
+                            <td colspan="2" class="leftTd">Abilities</td>
+                            <td colspan="2" class="rightTd">
                                 <% for(let ability of pokeData.abilities) { %>
                                     <div><a href="/ability/<%= ability %>"><%= titleCase(ability.replaceAll('-', ' ')).replaceAll(' ', '-') %></a></div>
                                 <% } %>

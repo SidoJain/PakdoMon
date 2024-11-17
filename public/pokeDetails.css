@@ -72,6 +72,15 @@ h2 {
 
 .infoTable {
     height: 35%;
+    width: 70%;
+}
+
+.infoTable .leftTd {
+    width: 40%;
+}
+
+.infoTable .rightTd {
+    width: 60%;
 }
 
 .infoTable a {
