@@ -51,6 +51,18 @@ app.get('/pokemon/:pokeName',  async (req, res) => {
             moveData.push(moveDataFromDB);
         }
         const evolData = await Evolution.findOne({id: pokeData.species});
+        if (evolData.pokemon_one) {
+            const data1 = await Pokemon.find({name: evolData.pokemon_one}, {sprite: 1})
+            evolData.pokemon_one_url = data1[0].sprite;
+        }
+        if (evolData.pokemon_two) {
+            const data2 = await Pokemon.find({name: evolData.pokemon_two}, {sprite: 1})
+            evolData.pokemon_two_url = data2[0].sprite;
+        }
+        if (evolData.pokemon_three) {
+            const data3 = await Pokemon.find({name: evolData.pokemon_three}, {sprite: 1});
+            evolData.pokemon_three_url = data3[0].sprite;
+        }
 
         res.render('pokeDetails', {pokeData, evolData, moveData});
     } catch (error) {
