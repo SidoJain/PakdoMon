@@ -119,7 +119,7 @@
                 <%  if (evolData.pokemon_three) { %>
                     <div class="evolArrow">
                         <img style="width: 30px; height: auto;" src="<%= evolData.evolve_two_by.imgUrl ? evolData.evolve_two_by.imgUrl : 'https://www.clipartmax.com/png/middle/34-343202_black-arrow-clip-art-photo-medium-size-black-arrow-clipart.png' %>" alt="">
-                        <h5><%= evolData.evolve_one_by.name ? titleCase(evolData.evolve_one_by.name.replaceAll('-', ' ')) : '' %></h5>
+                        <h5><%= evolData.evolve_two_by.name ? titleCase(evolData.evolve_two_by.name.replaceAll('-', ' ')) : '' %></h5>
                     </div>
                     <div class="evolPokeImg"><a href="<%= evolData.pokemon_three %>"><img src="<%= evolData.pokemon_three_url %>" alt=""></a></div>
                 <%  } %>
