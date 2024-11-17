@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" href="/search.css">
+
+    <script>
+        function searchFunc() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById('myInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName('li');
+
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <nav>
+        <button><a href="/home">Home</a></button>
+    </nav>
+    <div class="navLine"></div>
+
+    <main>
+        <div class="container">
+            <h1>Pokemon Search</h1>
+            <input type="text" id="myInput" onkeyup="searchFunc()" placeholder="Search for names..">
+            <div class="scrollElement">
+                <ul id="myUL">
+                    <%  for (let pokemon of pokeData.results) { %>
+                        <%  let dexNum; %>
+                        <%  if (Number.parseInt(pokemon.url.split('/')[pokemon.url.split('/').length - 2]) >= 100) {
+                            dexNum = pokemon.url.split('/')[pokemon.url.split('/').length - 2];
+                        } else if (Number.parseInt(pokemon.url.split('/')[pokemon.url.split('/').length - 2]) >= 10) {
+                            dexNum = '0' + pokemon.url.split('/')[pokemon.url.split('/').length - 2];
+                        } else {
+                            dexNum = '00' + pokemon.url.split('/')[pokemon.url.split('/').length - 2];
+                        } %>
+
+                        <li><a href="/pokemon/<%= pokemon.name %>"><%= dexNum %> <%= titleCase(pokemon.name.replaceAll('-', ' ')) %></a></li>
+                    <%  } %>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+<% function titleCase(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++)
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    return splitStr.join(' ');
+} %>

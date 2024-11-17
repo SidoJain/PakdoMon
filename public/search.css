@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: gray;
+	font-family: 'Fira Sans';
+	width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: center;
+}
+
+.container {
+    margin-block: 20px;
+    border-radius: 4px;
+    border: none;
+    width: 80%;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+h1 {
+    margin-block: 16px;
+}
+
+#myInput {
+	background-position: 10px 12px;
+	background-repeat: no-repeat;
+	width: 60%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 1px solid #ddd;
+	margin-block: 12px;
+    border-radius: 4px;
+}
+
+.scrollElement {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    width: 100%;
+    align-items: center;
+    height: 300px;
+    overflow-y: scroll;
+    margin-block: 20px;
+}
+
+#myUL {
+	list-style-type: none;
+    width: 60%;
+	padding: 0;
+	margin-block: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    justify-content: center;
+}
+
+#myUL li a {
+	border: 1px solid #ddd;
+	margin-top: -1px;
+	background-color: #f6f6f6;
+	padding: 12px;
+    font-size: 16px;
+	text-decoration: none;
+	color: black;
+	display: block;
+}
+
+#myUL li a:hover:not(.header) {
+	background-color: #eee;
+}
+
+@media screen and (max-width: 450px) {
+    #myInput {
+        font-size: 12px;
+    }
+
+    #myUL li a {
+        font-size: 12px;
+    }
+}

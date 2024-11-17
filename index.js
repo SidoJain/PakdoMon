@@ -21,20 +21,31 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     res.render('home');
 })
 
 app.get('/pokemon', (req, res) => {
     const {offset} = req.query ? req.query : 0;
     fetch(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`)
-        .then(response => {
-            if (!response)
-                throw new Error('ERROR! Could not Fetch API');
-            return response.json();
-        })
-        .then(pokeData => res.render(`pokemon`, {pokeData}))
-        .catch(error => console.log(error));
+    .then(response => {
+        if (!response)
+            throw new Error('ERROR! Could not Fetch API');
+        return response.json();
+    })
+    .then(pokeData => res.render(`pokemon`, {pokeData}))
+    .catch(error => console.log(error));
+})
+
+app.get('/pokemon/search', async (req, res) => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=905&offset=0`)
+    .then(response => {
+        if (!response)
+            throw new Error('ERROR! Could not Fetch API');
+        return response.json();
+    })
+    .then(pokeData => res.render(`search`, {pokeData}))
+    .catch(error => console.log(error));
 })
 
 app.get('/pokemon/:pokeName',  async (req, res) => {
