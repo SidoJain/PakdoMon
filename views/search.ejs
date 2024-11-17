@@ -29,7 +29,7 @@
 
 <body>
     <nav>
-        <button><a href="/home">Home</a></button>
+        <button><a href="/">Home</a></button>
     </nav>
     <div class="navLine"></div>
 
@@ -39,17 +39,17 @@
             <input type="text" id="myInput" onkeyup="searchFunc()" placeholder="Search for names..">
             <div class="scrollElement">
                 <ul id="myUL">
-                    <%  for (let pokemon of pokeData.results) { %>
+                    <%  for (let pokemon of pokeData) { %>
                         <%  let dexNum; %>
-                        <%  if (Number.parseInt(pokemon.url.split('/')[pokemon.url.split('/').length - 2]) >= 100) {
-                            dexNum = pokemon.url.split('/')[pokemon.url.split('/').length - 2];
-                        } else if (Number.parseInt(pokemon.url.split('/')[pokemon.url.split('/').length - 2]) >= 10) {
-                            dexNum = '0' + pokemon.url.split('/')[pokemon.url.split('/').length - 2];
+                        <%  if (pokemon.dex_num >= 100) {
+                            dexNum = pokemon.dex_num;
+                        } else if (pokemon.dex_num >= 10) {
+                            dexNum = '0' + pokemon.dex_num;
                         } else {
-                            dexNum = '00' + pokemon.url.split('/')[pokemon.url.split('/').length - 2];
+                            dexNum = '00' + pokemon.dex_num;
                         } %>
 
-                        <li><a href="/pokemon/<%= pokemon.name %>"><%= dexNum %> <%= titleCase(pokemon.name.replaceAll('-', ' ')) %></a></li>
+                        <li><a href="/pokemon/<%= pokemon.name %>"><%= pokemon.dex_num %> <%= titleCase(pokemon.name.replaceAll('-', ' ')) %></a></li>
                     <%  } %>
                 </ul>
             </div>
