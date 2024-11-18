@@ -33,7 +33,7 @@
                         <% if (pokemon.dex_num > 905) {
                             continue
                         } %>
-                        <div class="<%= pokeCount < 3 ? 'lowPoke' : '' %>"><a href="/pokemon/<%= pokemon.name %>"><img class="pokeImg" src='https://img.pokemondb.net/artwork/<%= pokemon.name.replace('alola', 'alolan') %>.jpg' alt="<%= pokemon.name.replace('alola', 'alolan') %>"></a></div>
+                        <div class="<%= pokeCount < 3 ? 'lowPoke' : '' %>"><a href="/pokemon/<%= pokemon.name %>"><img class="pokeImg" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= pokemon.dex_num %>.png"></a></div>
                 <%  } %>
             </div>
         </div>

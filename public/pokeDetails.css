@@ -46,25 +46,27 @@ h2 {
     display: flex;
     justify-content: center;
     font-size: 40px;
-    margin-block: 10px;
     font-weight: 600;
 }
 
 .pokeInfo {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .pokeImg {
     width: auto;
     height: 80%;
-    display: inline;
-    margin-right: 10%;
     padding: 0;
 }
 
 .details {
     width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     font-size: 18px;
     font-weight: 400;
     padding: 0;
@@ -88,7 +90,6 @@ h2 {
 }
 
 .statTable {
-    margin-block: 10px;
     width: 110%;
 }
 
