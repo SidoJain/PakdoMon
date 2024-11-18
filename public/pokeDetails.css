@@ -56,10 +56,10 @@ h2 {
 }
 
 .pokeImg {
-    width: 40%;
-    height: auto;
+    width: auto;
+    height: 80%;
     display: inline;
-    margin-right: 5%;
+    margin-right: 10%;
     padding: 0;
 }
 

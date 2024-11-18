@@ -9,9 +9,9 @@
     <script>
         function searchFunc() {
             var input, filter, ul, li, a, i, txtValue;
-            input = document.getElementById('myInput');
+            input = document.getElementById('input');
             filter = input.value.toUpperCase();
-            ul = document.getElementById("myUL");
+            ul = document.getElementById("ul");
             li = ul.getElementsByTagName('li');
 
             for (i = 0; i < li.length; i++) {
@@ -49,7 +49,7 @@
                             dexNum = '00' + pokemon.dex_num;
                         } %>
 
-                        <li><a href="/pokemon/<%= pokemon.name %>"><%= pokemon.dex_num %> <%= titleCase(pokemon.name.replaceAll('-', ' ')) %></a></li>
+                        <li><a href="/pokemon/<%= pokemon.name %>"><%= dexNum %> <%= titleCase(pokemon.name.replaceAll('-', ' ')) %></a></li>
                     <%  } %>
                 </ul>
             </div>
