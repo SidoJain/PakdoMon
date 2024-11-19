@@ -45,6 +45,7 @@ h1 {
 h2 {
     display: flex;
     justify-content: center;
+    text-align: center;
     font-size: 40px;
     font-weight: 600;
 }
@@ -91,10 +92,6 @@ h2 {
 
 .statTable {
     width: 110%;
-}
-
-progress {
-    width: 250px;
 }
 
 .evolution {
@@ -171,6 +168,47 @@ progress {
 .altForms img {
     width: 100%;
     height: auto;
+}
+
+progress {
+    width: 250px;
+    height: 25px;
+    border: 2px solid rgb(228, 228, 228);
+    border-radius: 6px;
+    height: 16px;
+}
+
+progress::-webkit-progress-bar {
+    background: none;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 4px;
+}
+
+progress.red::-webkit-progress-value {
+    background-color: rgb(243, 68, 68);
+}
+
+progress.orange::-webkit-progress-value {
+    background-color: rgb(255, 127, 15);
+}
+
+progress.yellow::-webkit-progress-value {
+    background-color: rgb(255, 221, 87);
+}
+
+progress.lime::-webkit-progress-value {
+    background-color: rgb(160, 229, 21);
+}
+
+progress.green::-webkit-progress-value {
+    background-color: rgb(35, 205, 94);
+}
+
+progress.aqua::-webkit-progress-value {
+    background-color: rgb(0, 194, 184);
 }
 
 @media screen and (max-width: 1100px) {

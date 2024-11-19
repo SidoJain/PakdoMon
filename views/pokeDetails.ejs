@@ -57,8 +57,23 @@
 
                     <table class="statTable">
                         <tbody>
-                            <% let statTotal = 0; %>
+                            <%  let statTotal = 0; %>
                             <% for (let stat of pokeData.stats) { %>
+                                <%  let color; %>
+                                <%  if (stat.base_stat <= 25) {
+                                    color = 'red';
+                                } else if (stat.base_stat <= 55) {
+                                    color = 'orange';
+                                } else if (stat.base_stat <= 85) {
+                                    color = 'yellow';
+                                } else if (stat.base_stat <= 115) {
+                                    color = 'lime';
+                                } else if (stat.base_stat <= 145) {
+                                    color = 'green';
+                                } else {
+                                    color = 'aqua';
+                                } %>
+
                                 <%  if (stat.name === 'special-attack') { %>
                                 <%      statName = 'Sp. Atk' %>
                                 <%  } else if (stat.name === 'special-defense') { %>
@@ -73,7 +88,7 @@
                                 <tr>
                                     <td colspan="2" style="text-align: right;"><%= statName %></td>
                                     <td colspan="2" style="width: 50%; text-align: center;"><%= stat.base_stat %></td>
-                                    <td colspan="2" style="text-align: right;"><progress id="bar" value="<%= stat.base_stat %>" min="0" max="180"></progress></td>
+                                    <td colspan="2" style="text-align: right;"><progress class="<%= color %>" id="bar" value="<%= stat.base_stat %>" min="0" max="180"></progress></td>
                                 </tr>
                             <% } %>
                         </tbody>
