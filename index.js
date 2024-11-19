@@ -30,12 +30,14 @@ app.get('/pokemon', async (req, res) => {
     if (!offset) offset = 0;
     offset = Number.parseInt(offset);
 
-    const pokeData = await Pokemon.find({dex_num: {$gt: offset}}, {name: 1, sprite: 1}, {limit: 20});
+    const pokeData = await Pokemon.find({dex_num: {$gt: offset, $lt: offset + 21}}, {name: 1, sprite: 1}, {limit: 20});
+    pokeData.sort((a, b) => a.dex_num - b.dex_num);
     res.render('pokemon', {pokeData, offset});
 })
 
 app.get('/pokemon/search', async (req, res) => {
-    const pokeData = await Pokemon.find({dex_num: {$gt: 0}}, {dex_num: 1, name: 1}, {limit: 905});
+    const pokeData = await Pokemon.find({dex_num: {$gt: 0, $lt: 906}}, {dex_num: 1, name: 1, display_name: 1, sprite: 1});
+    pokeData.sort((a, b) => a.dex_num - b.dex_num);
     res.render('search', {pokeData})
 })
 
@@ -50,6 +52,7 @@ app.get('/pokemon/:pokeName',  async (req, res) => {
             moveDataFromDB.level_learned_at = move.level_learned_at;
             moveData.push(moveDataFromDB);
         }
+
         const evolData = await Evolution.findOne({id: pokeData.species});
         if (evolData.pokemon_one) {
             const data1 = await Pokemon.find({name: evolData.pokemon_one}, {sprite: 1})
@@ -69,6 +72,8 @@ app.get('/pokemon/:pokeName',  async (req, res) => {
                 evolData.pokemon_three_url = data3[0].sprite;
             }
         }
+        if (pokeData.altForms && pokeData.altForms.length)
+            pokeData.altForms = await filterInPokeDB(pokeData.altForms);
 
         res.render('pokeDetails', {pokeData, evolData, moveData});
     } catch (error) {
@@ -85,6 +90,10 @@ app.get('/types', async (req, res) => {
 app.get('/ability/:abilityName', async (req, res) => {
     const {abilityName} = req.params;
     const abilityData = await Ability.findOne({name: abilityName});
+
+    abilityData.pokemon = await filterInPokeDB(abilityData.pokemon);
+    abilityData.pokemon.sort((a, b) => a.dex_num - b.dex_num);
+
     res.render(`ability`, {abilityData})
 })
 
@@ -95,3 +104,13 @@ app.get('/nature', (req, res) => {
 app.listen('8080', () => {
     console.log('LISTENING ON PORT 8080');
 })
+
+async function filterInPokeDB(pokemons) {
+    let filteredPoke = [];
+    for (let pokemon of pokemons) {
+        const response = await Pokemon.findOne({name: pokemon.name});
+        if (response === null) continue;
+        filteredPoke.push(pokemon);
+    }
+    return filteredPoke;
+}

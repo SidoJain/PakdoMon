@@ -37,6 +37,7 @@ main {
 
 h1 {
     margin-block: 16px;
+    text-align: center;
 }
 
 #input {

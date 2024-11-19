@@ -136,6 +136,43 @@ progress {
     height: 30px;
 }
 
+.megaEvos {
+    display: flex;
+    margin-block: 20px;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.megaEvos a {
+    display: flex;
+    justify-content: center;
+    width: 25%;
+}
+
+.megaEvos img {
+    width: 100%;
+    height: auto;
+}
+
+.altForms {
+    display: flex;
+    margin-block: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.altForms a {
+    display: flex;
+    justify-content: center;
+    width: 25%;
+}
+
+.altForms img {
+    width: 100%;
+    height: auto;
+}
+
 @media screen and (max-width: 1100px) {
     .pokeName h1  {
         font-size: 36px;

@@ -1,26 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%  let pokeName
-    if (pokeData.name.includes('-')) {
-        if (pokeData.name.split('-').length > 2) {
-            if (pokeData.name.includes('mega')) {
-                pokeName = pokeData.name
-            } else {
-                pokeName = pokeData.name.split('-')[0]
-            }
-        } else if (pokeData.name.includes('alola')) {
-            pokeName = pokeData.name.replaceAll('alola', 'alolan')
-        } else {
-            pokeName = pokeData.name
-        }
-    } else {
-        pokeName = pokeData.name
-    } %>
-
 <%- include('partials/head') %>
 <head>
-    <title><%= titleCase(pokeName.replaceAll('-', ' ')).replaceAll(' ', '-') %> | Pokemon</title>
+    <title><%= titleCase(pokeData.display_name.replaceAll('-', ' ')).replaceAll(' ', '-') %> | Pokemon</title>
     <link rel="stylesheet" href="/pokeDetails.css">
     <link rel="stylesheet" href="/typing.css">
 </head>
@@ -34,10 +17,10 @@
     <main>
         <div class="container">
             <div class="pokeName">
-                <h1><%= titleCase(pokeName.replaceAll('-', ' ')).replaceAll(' ', '-') %></h1>
+                <h1><%= titleCase(pokeData.display_name.replaceAll('-', ' ')).replaceAll(' ', '-') %></h1>
             </div>
             <div class="pokeInfo">
-                <img class="pokeImg" src='<%= pokeData.sprite %>' alt="<%= pokeName %>">
+                <img class="pokeImg" src='<%= pokeData.sprite %>' alt="<%= pokeData.display_name %>">
                 <div class="details">
                     <table class="infoTable">
                         <tr>
@@ -47,8 +30,10 @@
                                     00<%= pokeData.dex_num %>
                                 <% } else if (pokeData.dex_num < 100) { %>
                                     0<%= pokeData.dex_num %>
-                                <% } else { %>
+                                <% } else if (pokeData.dex_num < 1000) { %>
                                     <%= pokeData.dex_num %>
+                                <% } else { %>
+                                    <h4>NA</h4>
                                 <% } %>
                             </td>
                         </tr>
@@ -102,7 +87,7 @@
                 </div>
             </div>
 
-            <%  if (evolData) { %>
+            <%  if (evolData && pokeData.dex_num < 906) { %>
                 <%  if (evolData.pokemon_two_url) { %>
             <h2>Evolutions</h2>
             <div class="evolution">
@@ -125,6 +110,25 @@
                 <%  } %>
             <%  } %>
 
+            <%  if (pokeData.megas && pokeData.megas.length) { %>
+                <h2>Mega Evolutions</h2>
+                <div class="megaEvos">
+                    <%  for (let megaPoke of pokeData.megas) { %>
+                        <a href="<%= megaPoke.name %>"><img src="<%= megaPoke.url %>" alt="<%= megaPoke.name %>"></a>
+                    <%  } %>
+                </div>
+            <%  } %>
+
+            <%  if (pokeData.altForms && pokeData.altForms.length) { %>
+                <h2>Alternate Forms</h2>
+                <div class="altForms">
+                    <%  for (let altPoke of pokeData.altForms) { %>
+                        <a href="<%= altPoke.name %>"><img src="<%= altPoke.url %>" alt="<%= altPoke.name %>"></a>
+                    <%  } %>
+                </div>
+            <%  } %>
+
+            <%  if (pokeData.moves && pokeData.moves.length) { %>
             <h2>Learn Set</h2>
             <h4>(<%= titleCase(pokeData.moves_updated_to.replaceAll('-', ' ')).replaceAll(' ', '-') %>)</h4>
             <div class="moves">
@@ -155,6 +159,7 @@
                     </tbody>
                 </table>
             </div>
+            <%  } %>
         </div>
     </main>
 </body>
