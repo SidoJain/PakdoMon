@@ -1,7 +1,6 @@
 const express = require('express');
-const app = express();
-const path = require('path');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const Type = require('./model/typing');
 const Move = require('./model/move');
@@ -16,6 +15,7 @@ mongoose.connect('mongodb://localhost:27017/pokemonApp')
 	.catch((err) => {
 		console.log('MONGO Error:\n', err);
 	});
+const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
