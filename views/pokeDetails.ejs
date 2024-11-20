@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<%  let maxStat = 180; %>
+<%  for (let stat of pokeData.stats) {
+    if (stat.base_stat > maxStat) maxStat = stat.base_stat;
+} %>
+
 <%- include('partials/head') %>
 <head>
     <title><%= titleCase(pokeData.display_name.replaceAll('-', ' ')).replaceAll(' ', '-') %> | Pokemon</title>
@@ -88,7 +93,7 @@
                                 <tr>
                                     <td colspan="2" style="text-align: right;"><%= statName %></td>
                                     <td colspan="2" style="width: 50%; text-align: center;"><%= stat.base_stat %></td>
-                                    <td colspan="2" style="text-align: right;"><progress class="<%= color %>" id="bar" value="<%= stat.base_stat %>" min="0" max="180"></progress></td>
+                                    <td colspan="2" style="text-align: right;"><progress class="<%= color %>" id="bar" value="<%= stat.base_stat %>" min="0" max="<%= maxStat %>"></progress></td>
                                 </tr>
                             <% } %>
                         </tbody>
