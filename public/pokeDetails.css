@@ -35,8 +35,7 @@ button {
 }
 
 h1 {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     font-size: 48px;
     margin-block: 10px;
     font-weight: 800;
@@ -48,6 +47,23 @@ h2 {
     text-align: center;
     font-size: 40px;
     font-weight: 600;
+}
+
+.pokeName {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pokeName a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 800;
+    margin-inline: 20px;
 }
 
 .pokeInfo {
@@ -269,6 +285,10 @@ progress.aqua::-webkit-progress-value {
 }
 
 @media screen and (max-width: 600px) {
+    .pokeName a {
+        margin-inline: 12px;
+    }
+
     nav button {
         font-size: 20px;
     }

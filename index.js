@@ -75,7 +75,14 @@ app.get('/pokemon/:pokeName',  async (req, res) => {
         if (pokeData.altForms && pokeData.altForms.length)
             pokeData.altForms = await filterInPokeDB(pokeData.altForms);
 
-        res.render('pokeDetails', {pokeData, evolData, moveData});
+        const nextPoke = await Pokemon.findOne({dex_num: (pokeData.dex_num + 1)});
+        const prevPoke = await Pokemon.findOne({dex_num: (pokeData.dex_num - 1)});
+        const nextPrevPoke = {
+            nextPoke: nextPoke ? nextPoke.name : null,
+            prevPoke: prevPoke ? prevPoke.name : null
+        }
+
+        res.render('pokeDetails', {pokeData, evolData, moveData, nextPrevPoke});
     } catch (error) {
         console.log(error);
         res.render('notFound');
