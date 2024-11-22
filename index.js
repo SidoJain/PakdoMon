@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -8,14 +9,17 @@ const Pokemon = require('./model/pokemon');
 const Evolution = require('./model/evolution');
 const Ability = require('./model/ability');
 
-mongoose.connect('mongodb://localhost:27017/pokemonApp')
-	.then(() => {
-		console.log('MONGO CONNECTION OPEN');
-	})
-	.catch((err) => {
-		console.log('MONGO Error:\n', err);
-	});
+const mongoDBRun = async () => {
+    await mongoose.connect(process.env.dbURL)
+        .then(() => {
+            console.log('MONGO CONNECTION OPEN');
+        })
+        .catch((err) => {
+            console.log('MONGO Error:\n', err);
+        });
+}
 const app = express();
+mongoDBRun();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
