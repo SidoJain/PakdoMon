@@ -22,9 +22,9 @@
     <main>
         <div class="container">
             <div class="pokeName">
-                <a href="<%= nextPrevPoke.prevPoke %>">&#x2190;</a>
+                <a href="<%= nextPrevPoke.prevPoke %>" class="<%= (nextPrevPoke.prevPoke && pokeData.dex_num < 906) ? '' : 'hidden' %>">&#x2190;</a>
                 <h1><%= titleCase(pokeData.display_name.replaceAll('-', ' ')).replaceAll(' ', '-') %></h1>
-                <a href="<%= nextPrevPoke.nextPoke %>">&#x2192;</a>
+                <a href="<%= nextPrevPoke.nextPoke %>" class="<%= (nextPrevPoke.nextPoke && pokeData.dex_num < 906) ? '' : 'hidden' %>">&#x2192;</a>
             </div>
             <div class="pokeInfo">
                 <img class="pokeImg" src='<%= pokeData.sprite %>' alt="<%= pokeData.display_name %>">

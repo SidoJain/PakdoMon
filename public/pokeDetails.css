@@ -66,6 +66,10 @@ h2 {
     margin-inline: 20px;
 }
 
+.pokeName a.hidden {
+    visibility: hidden;
+}
+
 .pokeInfo {
     display: flex;
     justify-content: center;
