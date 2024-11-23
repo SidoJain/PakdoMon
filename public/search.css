@@ -92,6 +92,58 @@ h1 {
 	background-color: #eee;
 }
 
+tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nameTd {
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.nameTd div {
+    display: inline;
+}
+
+.dexNum {
+    width: 10%;
+}
+
+.imgTd {
+    width: 10%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .nameTd {
+        width: 50%;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .nameTd div {
+        display: block;
+        width: 60%;
+    }
+
+    .imgTd {
+        width: 40%;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
 @media screen and (max-width: 450px) {
     #input {
         font-size: 12px;

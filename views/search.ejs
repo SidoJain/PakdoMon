@@ -52,10 +52,12 @@
                         <li>
                             <a href="/pokemon/<%= pokemon.name %>">
                                 <table style="width: 100%;">
-                                    <tr style="width: 100%;">
-                                        <td style="width: 10%;"><%= dexNum %></td>
-                                        <td style="width: 80%;"><%= titleCase(pokemon.display_name.replaceAll('-', ' ')) %></td>
-                                        <td style="width: 10%;"><img style="width: 100%; height: auto;" src="<%= pokemon.sprite %>" alt="<%= pokemon.display_name %>"></td>
+                                    <tr>
+                                        <td class="nameTd">
+                                            <div class="dexNum"><%= dexNum %></div>
+                                            <div><%= titleCase(pokemon.display_name.replaceAll('-', ' ')) %></div>
+                                        </td>
+                                        <td class="imgTd"><img src="<%= pokemon.sprite %>" alt="<%= pokemon.display_name %>"></td>
                                     </tr>
                                 </table>
                             </a>
