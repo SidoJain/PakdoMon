@@ -112,6 +112,10 @@ app.get('/nature', (req, res) => {
     res.render(`nature`);
 })
 
+app.use((req, res) => {
+    res.status(404).render(`notFound`);
+})
+
 app.listen('8080', () => {
     console.log('LISTENING ON PORT 8080');
 })
