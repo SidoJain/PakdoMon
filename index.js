@@ -34,7 +34,7 @@ app.get('/pokemon', async (req, res) => {
     if (!offset) offset = 0;
     offset = Number.parseInt(offset);
 
-    const pokeData = await Pokemon.find({dex_num: {$gt: offset, $lt: offset + 21}}, {name: 1, sprite: 1}, {limit: 20});
+    let pokeData = await Pokemon.find({dex_num: {$gt: offset, $lt: offset + 21}}, {name: 1, sprite: 1, dex_num: 1}, {limit: 20});
     pokeData.sort((a, b) => a.dex_num - b.dex_num);
     res.render('pokemon', {pokeData, offset});
 })
