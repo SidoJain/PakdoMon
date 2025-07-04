@@ -13,7 +13,7 @@
 - [Usage](#usage)  
   - [Available Routes](#available-routes)  
   - [Running Locally](#running-locally)  
-- [Deployment](#deployment)  
+- [License](#license)  
 
 ---
 
