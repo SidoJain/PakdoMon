@@ -31,7 +31,6 @@ The app connects to a MongoDB database that stores structured Pokémon data. It 
 
 ## Tech Stack
 
-
 - **Backend:** Node.js, Express.js  
 - **Templating Engine:** EJS  
 - **Database:** MongoDB + Mongoose  
@@ -74,26 +73,16 @@ Replace the connection string with your actual MongoDB connection URI.
 
 ### Available Routes
 
-| Route                          | Description                                      |
+| Route                         | Description                                      |
 |-------------------------------|--------------------------------------------------|
-| `/`                            | Home page                                       |
+| `/`                           | Home page                                       |
 | `/pokemon`                    | List of Pokémon (20 at a time via `offset`)     |
-| `/pokemon/search`            | Search and browse through all Pokémon           |
-| `/pokemon/:pokeName`         | Detailed view of a specific Pokémon             |
-| `/types`                     | List of all types                               |
-| `/ability/:abilityName`      | View Pokémon with a specific ability            |
-| `/nature`                    | Static nature page                              |
-| Any invalid route            | Shows custom `notFound` page                    |
-
-### Running Locally
-
-To start the development server:
-
-```bash
-npm start
-```
-
-Open `http://localhost:8080` in your browser to explore the app.
+| `/pokemon/search`             | Search and browse through all Pokémon           |
+| `/pokemon/:pokeName`          | Detailed view of a specific Pokémon             |
+| `/types`                      | List of all types                               |
+| `/ability/:abilityName`       | View Pokémon with a specific ability            |
+| `/nature`                     | Static nature page                              |
+| Any invalid route             | Shows custom `notFound` page                    |
 
 ---
 
