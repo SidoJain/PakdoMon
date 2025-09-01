@@ -12,7 +12,6 @@
 - [Configuration](#configuration)  
 - [Usage](#usage)  
   - [Available Routes](#available-routes)  
-  - [Running Locally](#running-locally)  
 - [License](#license)  
 
 ---
