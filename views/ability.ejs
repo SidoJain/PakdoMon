@@ -27,7 +27,7 @@
             </div>
             <div class="pokemonContainer">
                 <%  for (let pokemon of abilityData.pokemon) { %>
-                        <div class="<%= pokeCount < 3 ? 'lowPoke' : '' %>"><a href="/pokemon/<%= pokemon.name %>"><img class="pokeImg" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= pokemon.dex_num %>.png"></a></div>
+                        <div class="<%= pokeCount < 3 ? 'lowPoke' : '' %>"><a href="/pokemon/<%= pokemon.name %>"><img loading="lazy" class="pokeImg" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= pokemon.dex_num %>.png"></a></div>
                 <%  } %>
             </div>
         </div>

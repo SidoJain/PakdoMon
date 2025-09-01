@@ -116,17 +116,17 @@
                 <div class="evolPokeImg"><a href="<%= evolData.pokemon_one %>"><img src="<%= evolData.pokemon_one_url %>" alt=""></a></div>
 
                 <div class="evolArrow">
-                    <img style="width: 30px; height: auto;" src="<%= evolData.evolve_one_by.imgUrl ? evolData.evolve_one_by.imgUrl : 'https://www.clipartmax.com/png/middle/34-343202_black-arrow-clip-art-photo-medium-size-black-arrow-clipart.png' %>" alt="">
+                    <img loading="lazy" style="width: 30px; height: auto;" src="<%= evolData.evolve_one_by.imgUrl ? evolData.evolve_one_by.imgUrl : 'https://www.clipartmax.com/png/middle/34-343202_black-arrow-clip-art-photo-medium-size-black-arrow-clipart.png' %>" alt="">
                     <h5><%= evolData.evolve_one_by.name ? titleCase(evolData.evolve_one_by.name.replaceAll('-', ' ')) : '' %></h5>
                 </div>
                 <div class="evolPokeImg"><a href="<%= evolData.pokemon_two %>"><img src="<%= evolData.pokemon_two_url %>" alt=""></a></div>
 
                 <%  if (evolData.pokemon_three_url) { %>
                     <div class="evolArrow">
-                        <img style="width: 30px; height: auto;" src="<%= evolData.evolve_two_by.imgUrl ? evolData.evolve_two_by.imgUrl : 'https://www.clipartmax.com/png/middle/34-343202_black-arrow-clip-art-photo-medium-size-black-arrow-clipart.png' %>" alt="">
+                        <img loading="lazy" style="width: 30px; height: auto;" src="<%= evolData.evolve_two_by.imgUrl ? evolData.evolve_two_by.imgUrl : 'https://www.clipartmax.com/png/middle/34-343202_black-arrow-clip-art-photo-medium-size-black-arrow-clipart.png' %>" alt="">
                         <h5><%= evolData.evolve_two_by.name ? titleCase(evolData.evolve_two_by.name.replaceAll('-', ' ')) : '' %></h5>
                     </div>
-                    <div class="evolPokeImg"><a href="<%= evolData.pokemon_three %>"><img src="<%= evolData.pokemon_three_url %>" alt=""></a></div>
+                    <div class="evolPokeImg"><a href="<%= evolData.pokemon_three %>"><img loading="lazy" src="<%= evolData.pokemon_three_url %>" alt=""></a></div>
                 <%  } %>
             </div>
                 <%  } %>
@@ -136,7 +136,7 @@
                 <h2>Mega Evolutions</h2>
                 <div class="megaEvos">
                     <%  for (let megaPoke of pokeData.megas) { %>
-                        <a href="<%= megaPoke.name %>"><img src="<%= megaPoke.url %>" alt="<%= megaPoke.name %>"></a>
+                        <a href="<%= megaPoke.name %>"><img loading="lazy" src="<%= megaPoke.url %>" alt="<%= megaPoke.name %>"></a>
                     <%  } %>
                 </div>
             <%  } %>
@@ -145,7 +145,7 @@
                 <h2>Alternate Forms</h2>
                 <div class="altForms">
                     <%  for (let altPoke of pokeData.altForms) { %>
-                        <a href="<%= altPoke.name %>"><img src="<%= altPoke.url %>" alt="<%= altPoke.name %>"></a>
+                        <a href="<%= altPoke.name %>"><img loading="lazy" src="<%= altPoke.url %>" alt="<%= altPoke.name %>"></a>
                     <%  } %>
                 </div>
             <%  } %>
@@ -172,7 +172,7 @@
                                 <td><%= move.level_learned_at %></td>
                                 <td><%= titleCase(move.name.replaceAll('-', ' ')) %></td>
                                 <td class="typing <%= capitalize(move.typing) %>"><%= capitalize(move.typing) %></td>
-                                <td><img width="30px" height="20px" src="https://img.pokemondb.net/images/icons/move-<%= move.damage_class %>.png" alt=""></td>
+                                <td><img loading="lazy" width="30px" height="20px" src="https://img.pokemondb.net/images/icons/move-<%= move.damage_class %>.png" alt=""></td>
                                 <td><%= move.power ? move.power : '-' %></td>
                                 <td><%= move.accuracy ? move.accuracy : '-' %></td>
                                 <td><%= move.pp ? move.pp : '-' %></td>

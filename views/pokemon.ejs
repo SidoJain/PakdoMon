@@ -17,7 +17,7 @@
     <main>
         <div class="container <%= (offset === 900) ? 'end' : '' %>">
             <% for (let poke of pokeData) { %>
-                    <div><a href="/pokemon/<%= poke.name %>"><img class="pokeImg" src='<%= poke.sprite %>' alt="<%= poke.name %>"></a></div>
+                    <div><a href="/pokemon/<%= poke.name %>"><img loading="lazy" class="pokeImg" src='<%= poke.sprite %>' alt="<%= poke.name %>"></a></div>
             <% } %>
         </div>
     </main>
